@@ -47,6 +47,7 @@ export default defineComponent({
   margin-left: 5em;
   padding-left: 0;
   font-size: 18px;
+  font-weight: 500;
   color: #888888;
   flex-grow: 1;
 }

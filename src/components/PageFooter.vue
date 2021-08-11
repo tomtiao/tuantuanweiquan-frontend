@@ -37,7 +37,7 @@ export default defineComponent({
   margin: 0 auto;
 }
 .footer>* {
-  margin: 1em 0;
+  margin: 0.75em 0;
 }
 .support {
   display: flex;
