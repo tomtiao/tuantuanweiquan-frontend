@@ -197,7 +197,7 @@ export default defineComponent({
   width: 100%;
   height: 300px;
 }
-#slider /deep/ .n-carousel__dots .n-carousel__dot {
+#slider :deep(.n-carousel__dots .n-carousel__dot) {
   margin-right: 2em !important;
 }
 .slider-item {
