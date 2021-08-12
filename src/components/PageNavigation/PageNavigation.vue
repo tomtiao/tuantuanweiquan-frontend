@@ -35,7 +35,7 @@ export default defineComponent({
 .nav {
   display: flex;
   align-items: center;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .logo-section {

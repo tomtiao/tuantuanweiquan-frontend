@@ -5,19 +5,23 @@ export default async function fetchSliderInfo(): Promise<SliderInfo[]> {
   return [
     {
       title: '起底数字资产交易平台乱象：“引流”藏套路，宣传似传销，交易涉洗钱',
-      imageLink: '/slider/tech.png'
+      imageLink: '/slider/tech.png',
+      link: '#'
     },
     {
       title: '起底数字资产交易平台乱象：“引流”藏套路，宣传似传销，交易涉洗钱',
-      imageLink: '/slider/tech.png'
+      imageLink: '/slider/tech.png',
+      link: '#'
     },
     {
       title: '起底数字资产交易平台乱象：“引流”藏套路，宣传似传销，交易涉洗钱',
-      imageLink: '/slider/tech.png'
+      imageLink: '/slider/tech.png',
+      link: '#'
     },
     {
       title: '起底数字资产交易平台乱象：“引流”藏套路，宣传似传销，交易涉洗钱',
-      imageLink: '/slider/tech.png'
+      imageLink: '/slider/tech.png',
+      link: '#'
     }
   ]
 }

@@ -34,13 +34,30 @@
         </form>
         <FrontPageCounter
           id="counter"
+          class="push"
           :totalO="totalO"
         ></FrontPageCounter>
       </div>
     </div>
-    <div class="slider-wrapper">
-
-    </div>
+    <NCarousel
+      id="slider"
+      dot-placement="top"
+      style="--dot-size: 17px;"
+      autoplay
+    >
+      <a
+        class="slider-item"
+        v-for="slider of sliders"
+        :key="slider"
+        :href="slider.link"
+      >
+        <img
+          :src="slider.imageLink"
+          :alt="slider.title"
+        >
+        <h2 class="title">{{ slider.title }}</h2>
+      </a>
+    </NCarousel>
   </div>
 </template>
 
@@ -50,6 +67,7 @@ import ToolTip from './ToolTip.vue';
 import PageSubtitle from '../PageSubtitle.vue';
 import FrontPageArticleList from './FrontPageArticleList.vue';
 import FrontPageCounter from './FrontPageCounter.vue';
+import { NCarousel } from 'naive-ui';
 import usePopularArticles from './usePopularArticles';
 import useSlider from './useSlider';
 import useTotalCounter from './useTotalCounter';
@@ -60,7 +78,8 @@ export default defineComponent({
     ToolTip,
     PageSubtitle,
     FrontPageArticleList,
-    FrontPageCounter
+    FrontPageCounter,
+    NCarousel
   },
   setup() {
     const mainContentTitle = '团团热榜';
@@ -90,6 +109,7 @@ export default defineComponent({
 .content-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 .content {
@@ -115,8 +135,9 @@ export default defineComponent({
 .actions {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 300px;
+  padding-top: 1em;
 }
 .button-like-link {
   color: #ffffff;
@@ -170,5 +191,36 @@ export default defineComponent({
 }
 #counter {
   height: 120px;
+}
+#slider {
+  width: 100%;
+  height: 300px;
+}
+#slider /deep/ .n-carousel__dots .n-carousel__dot {
+  margin-right: 2em !important;
+}
+.slider-item {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.slider-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slider-item .title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  color: #d1d1d1;
+  padding: 1em 0;
+  font-size: 30px;
+  font-weight: inherit;
+  background-color: rgba(0, 0, 0, 0.45);
 }
 </style>

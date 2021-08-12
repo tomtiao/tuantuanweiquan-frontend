@@ -31,7 +31,7 @@ export default defineComponent({
   display: flex;
   justify-content: flex-end;
   align-content: center;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1em 0;
 }
