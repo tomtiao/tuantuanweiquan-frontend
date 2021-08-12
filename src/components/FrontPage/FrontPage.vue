@@ -1,6 +1,6 @@
 <template>
   <PageTemplate>
-    <FrontPageContent id="front-page-content"></FrontPageContent>
+    <FrontPageContent></FrontPageContent>
   </PageTemplate>
 </template>
 

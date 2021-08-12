@@ -111,6 +111,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  line-height: 1;
 }
 .content {
   display: flex;
@@ -186,6 +187,7 @@ export default defineComponent({
   background-color: unset;
   outline: 0;
   max-width: 75%;
+  font-family: 'Source Han Sans CN';
 }
 .search-bar::placeholder {
   opacity: 1;

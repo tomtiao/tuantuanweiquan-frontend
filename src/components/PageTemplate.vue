@@ -2,7 +2,7 @@
   <PageHeader id="page-header"></PageHeader>
   <PageNavigation id="page-navigation"></PageNavigation>
   <div id="page-content-wrapper">
-    <slot id="page-content"></slot>
+    <slot></slot>
   </div>
   <PageFooter id="page-footer"></PageFooter>
 </template>
@@ -61,6 +61,7 @@ export default defineComponent({
 body {
   margin: 0;
   padding: 0;
+  line-height: unset;
 }
 #app {
   display: flex;
@@ -80,5 +81,6 @@ body {
 #page-content-wrapper {
   flex-grow: 1;
   display: flex;
+  justify-content: center;
 }
 </style>

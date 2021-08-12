@@ -40,6 +40,7 @@ export default defineComponent({
   align-items: center;
   border-radius: 10px;
   background-color: #656565;
+  line-height: 1.2;
 }
 .front-page-counter::before {
   content: "";
