@@ -12,13 +12,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType, toRefs } from 'vue';
+import { Article } from './usePopularArticles';
 import FrontPageArticleItem from './FrontPageArticleItem.vue';
-
-export interface Article {
-  title: string;
-  imageLink: string;
-  articleLink: string;
-}
 
 export default defineComponent({
   name: 'FrontPageArticleList',

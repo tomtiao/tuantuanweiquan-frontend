@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, toRefs } from 'vue';
-import { Article } from './FrontPageArticleList.vue';
+import { Article } from './usePopularArticles';
 
 export default defineComponent({
   name: 'FrontPageArticleItem',

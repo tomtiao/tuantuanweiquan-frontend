@@ -10,7 +10,7 @@
           <h2>TUANTUANWEIQUAN</h2>
         </div>
       </div>
-      <PageNavigationList></PageNavigationList>
+      <PageNavigationList id="nav-list"></PageNavigationList>
     </nav>
   </div>
 </template>
@@ -29,7 +29,6 @@ export default defineComponent({
 
 <style scoped>
 .nav-wrapper {
-  width: 100vw;
   color: #888888;
   font-size: 18px;
 }
@@ -67,5 +66,8 @@ h1 {
 h2 {
   font-size: 10px;
   color: #989898;
+}
+#nav-list {
+  margin-left: 4.5em;
 }
 </style>

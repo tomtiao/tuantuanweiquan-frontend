@@ -12,49 +12,75 @@
           id="front-page-articles"
         ></FrontPageArticleList>
       </div>
-      <div class="actions"></div>
+      <div class="actions">
+        <a href="#" class="button-like-link">
+          <img src="../../assets/tianxie.png" alt="我要维权">
+          <span>我要维权</span>
+        </a>
+        <a href="#" class="button-like-link">
+          <img src="../../assets/duoren.png" alt="我的团团">
+          <span>我的团团</span>
+        </a>
+        <form
+          class="search"
+          @submit="searchTuantuan"
+        >
+          <img src="../../assets/search.png" alt="我的团团">
+          <input
+            type="search"
+            class="search-bar"
+            placeholder="输入关键字搜索团团"
+          >
+        </form>
+        <FrontPageCounter
+          id="counter"
+          :totalO="totalO"
+        ></FrontPageCounter>
+      </div>
     </div>
-    <div class="slider"></div>
+    <div class="slider-wrapper">
+
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent } from 'vue';
 import ToolTip from './ToolTip.vue';
 import PageSubtitle from '../PageSubtitle.vue';
-import FrontPageArticleList, { Article } from './FrontPageArticleList.vue';
+import FrontPageArticleList from './FrontPageArticleList.vue';
+import FrontPageCounter from './FrontPageCounter.vue';
+import usePopularArticles from './usePopularArticles';
+import useSlider from './useSlider';
+import useTotalCounter from './useTotalCounter';
 
 export default defineComponent({
   name: 'FrontPageContent',
   components: {
     ToolTip,
     PageSubtitle,
-    FrontPageArticleList
+    FrontPageArticleList,
+    FrontPageCounter
   },
   setup() {
     const mainContentTitle = '团团热榜';
+    const { articles } = usePopularArticles();
+    const { sliders } = useSlider();
+    const { totalO } = useTotalCounter();
 
-    let articles = ref<Article[]>([]);
-
-    // 待办：实现获取文章列表过程
-    const fetchPopularArticles = async () => {
-      return [
-        { title: '龙洞飞通手机店虚假宣传欺骗消费者', imageLink: '/popular/shouji.png', articleLink: '#' },
-        { title: '靓点美容院恶意欺骗消费者开会员', imageLink: '/popular/meirong.png', articleLink: '#' },
-        { title: '广州魔乐科技有限公司虚假刷单', imageLink: '/popular/pian.png', articleLink: '#' },
-        { title: '融鑫支付冒名拉卡拉,私自扣费', imageLink: '/popular/zhifu.png', articleLink: '#' }
-      ];
+    // 待办：实现搜索功能
+    const searchTuantuan = async (evt: Event) => {
+      if (evt)
+      evt.preventDefault();
+      console.log(evt);
     };
-
-    const getPopular = async () => {
-      articles.value = await fetchPopularArticles();
-    };
-
-    onMounted(getPopular);
 
     return {
       mainContentTitle,
-      articles
+      articles,
+      sliders,
+      totalO,
+      searchTuantuan
     };
   }
 });
@@ -69,7 +95,7 @@ export default defineComponent({
 .content {
   display: flex;
   justify-content: space-between;
-  max-width: 1300px;
+  width: 1200px;
   height: 410px;
 }
 .infos {
@@ -77,6 +103,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   width: 830px;
+  flex-shrink: 0;
 }
 #front-page-subtitle {
   margin-top: 18px;
@@ -84,5 +111,64 @@ export default defineComponent({
 }
 #front-page-articles {
   flex-grow: 1;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 300px;
+}
+.button-like-link {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 2em;
+  border-radius: 30px;
+  letter-spacing: 0.5em;
+  font-size: 24px;
+  font-weight: 500;
+  background-color: #ffce4b;
+}
+.button-like-link img {
+  width: 1.25em;
+  height: 1.25em;
+  filter: brightness(100);
+}
+.button-like-link {
+  text-decoration: inherit;
+}
+.search {
+  color: #b3b3b3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ffce4b;
+  height: 60px;
+  padding: 0 0.5em 0 2em;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.search img {
+  width: 1.25em;
+  height: 1.25em;
+}
+.search-bar {
+  color: inherit;
+  border: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: unset;
+  outline: 0;
+  max-width: 75%;
+}
+.search-bar::placeholder {
+  opacity: 1;
+}
+#counter {
+  height: 120px;
 }
 </style>

@@ -42,9 +42,8 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 740px;
+  max-width: 700px;
   margin: 1.5em 0;
-  margin-left: 5em;
   padding-left: 0;
   font-size: 18px;
   font-weight: 500;

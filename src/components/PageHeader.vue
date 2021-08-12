@@ -23,7 +23,6 @@ export default defineComponent({
 
 <style scoped>
 .header-wrapper {
-  width: 100vw;
   color: #fffefe;
   background-color: #656565;
   font-size: 18px;
