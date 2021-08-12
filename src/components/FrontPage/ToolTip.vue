@@ -53,6 +53,7 @@ export default defineComponent({
   font-weight: 500;
   line-height: 1;
   background-color: #fff8e5;
+  font-family: 'Source Han Sans CN';
 }
 .tool-tip-icon {
   width: 1.75em;

@@ -53,11 +53,14 @@ export default defineComponent({
   color: #b3b3b3;
   margin: 0;
   font-size: 16px;
+  font-weight: inherit;
+  font-family: 'Source Han Sans CN Normal';
 }
 .number {
   color: #ffce4b;
   margin: 0;
   font-size: 48px;
   font-weight: bold;
+  font-family: 'Source Han Sans CN';
 }
 </style>

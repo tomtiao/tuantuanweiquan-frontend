@@ -26,6 +26,7 @@ export default defineComponent({
   color: #fffefe;
   background-color: #656565;
   font-size: 18px;
+  font-family: 'Source Han Sans CN Normal';
 }
 .header {
   display: flex;

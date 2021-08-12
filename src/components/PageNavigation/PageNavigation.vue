@@ -40,6 +40,7 @@ export default defineComponent({
 }
 .logo-section {
   display: flex;
+  font-family: 'M FLi Hei_ Noncommercial';
 }
 .logo {
   width: 3em;
@@ -69,5 +70,6 @@ h2 {
 }
 #nav-list {
   margin-left: 4.5em;
+  font-family: 'Source Han Sans CN';
 }
 </style>

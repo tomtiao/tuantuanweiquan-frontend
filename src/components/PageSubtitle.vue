@@ -29,6 +29,7 @@ export default defineComponent({
 .page-subtitle {
   font-size: 30px;
   color: #6c6c6c;
+  font-family: "M FLi Hei_ Noncommercial";
 }
 .subtitle {
   display: flex;

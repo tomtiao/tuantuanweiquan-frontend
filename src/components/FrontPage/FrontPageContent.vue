@@ -138,6 +138,7 @@ export default defineComponent({
   justify-content: space-between;
   width: 300px;
   padding-top: 1em;
+  font-family: 'Source Han Sans CN';
 }
 .button-like-link {
   color: #ffffff;
@@ -219,8 +220,10 @@ export default defineComponent({
   margin: 0;
   color: #d1d1d1;
   padding: 1em 0;
+  line-height: 1;
   font-size: 30px;
   font-weight: inherit;
   background-color: rgba(0, 0, 0, 0.45);
+  font-family: 'Source Han Sans CN Regular';
 }
 </style>

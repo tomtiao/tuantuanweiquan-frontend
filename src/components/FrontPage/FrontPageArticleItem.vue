@@ -64,6 +64,7 @@ export default defineComponent({
   color: #ffffff;
   font-weight: 300;
   max-width: 70%;
+  font-family: "Source Han Sans CN";
 }
 a {
   text-decoration: inherit;
@@ -81,6 +82,7 @@ a:link, a:visited, a:hover, a:active {
   height: 21px;
   border-radius: 1em;
   background-color: #ffce4b;
+  font-family: "Source Han Sans CN Normal";
 }
 .push {
   margin-left: auto;
