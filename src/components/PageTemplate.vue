@@ -27,36 +27,42 @@ export default defineComponent({
 @font-face {
   font-family: 'Source Han Sans CN';
   src: local('Source Han Sans CN'),
-  url('../assets/font/SourceHanSansCN-Light.otf');
+  url('../assets/fonts/SourceHanSansCN-Light.otf');
   font-weight: 300;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Source Han Sans CN Normal';
   src: local('Source Han Sans CN'),
-  url('../assets/font/SourceHanSansCN-Normal.otf');
+  url('../assets/fonts/SourceHanSansCN-Normal.otf');
   font-weight: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Source Han Sans CN Regular';
   src: local('Source Han Sans CN'),
-  url('../assets/font/SourceHanSansCN-Regular.otf');
+  url('../assets/fonts/SourceHanSansCN-Regular.otf');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Source Han Sans CN';
   src: local('Source Han Sans CN'),
-  url('../assets/font/SourceHanSansCN-Medium.otf');
+  url('../assets/fonts/SourceHanSansCN-Medium.otf');
   font-weight: 500;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Source Han Sans CN';
   src: local('Source Han Sans CN'),
-  url('../assets/font/SourceHanSansCN-Bold.otf');
+  url('../assets/fonts/SourceHanSansCN-Bold.otf');
   font-weight: bold;
+  font-display: swap;
 }
 @font-face {
   font-family: 'M FLi Hei_ Noncommercial';
   src: local('M FLi Hei_ Noncommercial'),
-  url('../assets/font/LiHei-Regular.otf');
+  url('../assets/fonts/LiHei-Regular.otf');
+  font-display: swap;
 }
 body {
   margin: 0;

@@ -10,6 +10,10 @@ module.exports = {
       entry: 'src/index.ts',
       template: 'public/index.html',
       filename: 'index.html'
+    },
+    createTuan: {
+      entry: 'src/createTuan.ts',
+      filename: 'createTuan/index.html'
     }
   }
 }
