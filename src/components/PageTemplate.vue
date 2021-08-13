@@ -59,6 +59,12 @@ export default defineComponent({
   font-display: swap;
 }
 @font-face {
+  font-family: 'Source Han Serif CN';
+  src: local('Source Han Serif CN'),
+  url('../assets/fonts/SourceHanSerifCN-Medium.otf');
+  font-display: swap;
+}
+@font-face {
   font-family: 'M FLi Hei_ Noncommercial';
   src: local('M FLi Hei_ Noncommercial'),
   url('../assets/fonts/LiHei-Regular.otf');
