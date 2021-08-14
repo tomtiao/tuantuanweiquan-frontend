@@ -28,14 +28,15 @@ export default defineComponent({
       if (!app) throw new TypeError('app is not found.');
       
       app.addEventListener('click', (e: Event) => {
-        if (e.target instanceof HTMLElement) {
-          if (e.target.tagName === 'A') {
-            const a = e.target as HTMLAnchorElement;
-            e.preventDefault();
-            router.push({
-              path: a.href
-            });
-          }
+        if (e.target instanceof HTMLAnchorElement) {
+          const a = e.target;
+          e.preventDefault();
+          const url = new URL(a.href);
+          router.push({
+            path: url.pathname,
+            hash: url.hash,
+            params: Object.fromEntries(url.searchParams)
+          });
         }
       });
     };
