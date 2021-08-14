@@ -1,27 +1,21 @@
 <template>
-  <PageTemplate>
-    <div class="content-wrapper">
-      <div class="note">
-        <img src="../../assets/tick.png" alt="对勾" class="note-img">
-        <p class="note-content">您的创建申请已提交，请耐心等候</p>
-      </div>
-      <div class="promote">
-        <a href="#" class="link">转发</a>
-        <p class="promote-content">让更多人看见</p>
-      </div>
+  <div class="content-wrapper">
+    <div class="note">
+      <img src="../../assets/tick.png" alt="对勾" class="note-img">
+      <p class="note-content">您的创建申请已提交，请耐心等候</p>
     </div>
-  </PageTemplate>
+    <div class="promote">
+      <a href="#" class="link">转发</a>
+      <p class="promote-content">让更多人看见</p>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageTemplate from '../PageTemplate.vue';
 
 export default defineComponent({
-  name: 'CreateTuan',
-  components: {
-    PageTemplate
-  }
+  name: 'CreateTuan'
 });
 </script>
 

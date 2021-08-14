@@ -1,48 +1,42 @@
 <template>
-  <PageTemplate>
-    <div class="content-wrapper">
-      <div class="paper">
-        <h2 class="title">委托书</h2>
-        <div class="personal-info">
-          <h3 class="title">委托人</h3>
-          <div class="content">
-            <h4 class="subtitle">姓名</h4>
-            <p class="name">{{ client.name }}</p>
-            <h4 class="subtitle">性别</h4>
-            <p class="gender">{{ client.gender }}</p>
-            <h4 class="subtitle">身份证号码</h4>
-            <p class="number">{{ client.number }}</p>
-          </div>
-        </div>
-        <div class="personal-info">
-          <h3 class="title">受托人</h3>
-          <div class="content">
-            <h4 class="subtitle">姓名</h4>
-            <p class="name">{{ trustee.name }}</p>
-            <h4 class="subtitle">性别</h4>
-            <p class="gender">{{ trustee.gender }}</p>
-            <h4 class="subtitle">身份证号码</h4>
-            <p class="number">{{ trustee.number }}</p>
-          </div>
-        </div>
-        <div class="signature push">
-          <span class="note">签名</span>
-          <img src="delegate/signature.png" alt="签名">
+  <div class="content-wrapper">
+    <div class="paper">
+      <h2 class="title">委托书</h2>
+      <div class="personal-info">
+        <h3 class="title">委托人</h3>
+        <div class="content">
+          <h4 class="subtitle">姓名</h4>
+          <p class="name">{{ client.name }}</p>
+          <h4 class="subtitle">性别</h4>
+          <p class="gender">{{ client.gender }}</p>
+          <h4 class="subtitle">身份证号码</h4>
+          <p class="number">{{ client.number }}</p>
         </div>
       </div>
+      <div class="personal-info">
+        <h3 class="title">受托人</h3>
+        <div class="content">
+          <h4 class="subtitle">姓名</h4>
+          <p class="name">{{ trustee.name }}</p>
+          <h4 class="subtitle">性别</h4>
+          <p class="gender">{{ trustee.gender }}</p>
+          <h4 class="subtitle">身份证号码</h4>
+          <p class="number">{{ trustee.number }}</p>
+        </div>
+      </div>
+      <div class="signature push">
+        <span class="note">签名</span>
+        <img src="/delegate/signature.png" alt="签名">
+      </div>
     </div>
-  </PageTemplate>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageTemplate from '../PageTemplate.vue';
 
 export default defineComponent({
   name: 'Delegate',
-  components: {
-    PageTemplate
-  },
   setup() {
     return {
       client: {
