@@ -24,19 +24,36 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const useRouterLink = () => {
+      function findElementByTagNameUpwards(ele: Element, tagName: string): Element | null {
+        let parent = ele.parentElement;
+
+        while (parent !== null && parent.tagName !== tagName.toUpperCase()) {
+          parent = parent.parentElement;
+        }
+
+        return parent;
+      }
+
       const app = document.getElementById('app');
       if (!app) throw new TypeError('app is not found.');
+
       
       app.addEventListener('click', (e: Event) => {
-        if (e.target instanceof HTMLAnchorElement) {
-          const a = e.target;
-          e.preventDefault();
-          const url = new URL(a.href);
-          router.push({
-            path: url.pathname,
-            hash: url.hash,
-            params: Object.fromEntries(url.searchParams)
-          });
+        if (e.target instanceof Element) {
+          const ele = findElementByTagNameUpwards(e.target, 'a');
+          if (ele !== null) {
+            const a = ele as HTMLAnchorElement;
+            const url = new URL(a.href);
+            if (window.location.hostname === url.hostname
+            && window.location.port === window.location.port) {
+              e.preventDefault();
+              router.push({
+                path: url.pathname,
+                hash: url.hash,
+                params: Object.fromEntries(url.searchParams)
+              });
+            }
+          }
         }
       });
     };
