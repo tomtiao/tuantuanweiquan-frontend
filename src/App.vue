@@ -24,8 +24,8 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const useRouterLink = () => {
-      function findElementByTagNameUpwards(ele: Element, tagName: string): Element | null {
-        let parent = ele.parentElement;
+      function findElementByTagNameUpwards(ele: Element | null, tagName: string): Element | null {
+        let parent = ele;
 
         while (parent !== null && parent.tagName !== tagName.toUpperCase()) {
           parent = parent.parentElement;
