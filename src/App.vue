@@ -38,8 +38,9 @@ export default defineComponent({
       if (!app) throw new TypeError('app is not found.');
 
       
-      app.addEventListener('click', (e: Event) => {
-        if (e.target instanceof Element) {
+      app.addEventListener('click', e => {
+        // 按下 Ctrl 时保持浏览器默认行为
+        if ( !e.ctrlKey && e.target instanceof Element ) {
           const ele = findElementByTagNameUpwards(e.target, 'a');
           if (ele !== null) {
             const a = ele as HTMLAnchorElement;
