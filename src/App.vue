@@ -33,17 +33,20 @@ export default defineComponent({
 
         return parent;
       }
-
-      const app = document.getElementById('app');
-      if (!app) throw new TypeError('app is not found.');
-
       
-      app.addEventListener('click', e => {
+      const interceptLink = (e: MouseEvent) => {
         // 按下 Ctrl 时保持浏览器默认行为
         if ( !e.ctrlKey && e.target instanceof Element ) {
-          const ele = findElementByTagNameUpwards(e.target, 'a');
-          if (ele !== null) {
-            const a = ele as HTMLAnchorElement;
+          // 触发事件的可能是 <a> 内部的子元素，需要向上寻找是否有 a 标签
+          // 不支持 composedPath 的浏览器使用 findElementByTagNameUpwards
+          let ele;
+          if (e.composedPath) {
+            ele = e.composedPath().find(ele => ele instanceof HTMLAnchorElement);
+          } else {
+            ele = findElementByTagNameUpwards(e.target, 'a');
+          }
+          if (ele instanceof HTMLAnchorElement) {
+            const a = ele;
             const url = new URL(a.href);
             if (window.location.hostname === url.hostname
             && window.location.port === window.location.port) {
@@ -56,7 +59,12 @@ export default defineComponent({
             }
           }
         }
-      });
+      };
+
+      const app = document.getElementById('app');
+      if (!app) throw new TypeError('app is not found.');
+      
+      app.addEventListener('click', interceptLink);
     };
 
     onMounted(useRouterLink);
