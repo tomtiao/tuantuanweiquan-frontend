@@ -17,7 +17,7 @@
           <img src="../../assets/tianxie.png" alt="我要维权">
           <span>我要维权</span>
         </a>
-        <a href="#" class="button-like-link">
+        <a href="/mytuan" class="button-like-link">
           <img src="../../assets/duoren.png" alt="我的团团">
           <span>我的团团</span>
         </a>

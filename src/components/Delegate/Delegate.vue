@@ -6,50 +6,57 @@
         <h3 class="title">委托人</h3>
         <div class="content">
           <h4 class="subtitle">姓名</h4>
-          <p class="name">{{ client.name }}</p>
+          <p class="name">{{ personalInfo.client.name }}</p>
           <h4 class="subtitle">性别</h4>
-          <p class="gender">{{ client.gender }}</p>
+          <p class="gender">{{ personalInfo.client.gender }}</p>
           <h4 class="subtitle">身份证号码</h4>
-          <p class="number">{{ client.number }}</p>
+          <p class="number">{{ personalInfo.client.number }}</p>
         </div>
       </div>
       <div class="personal-info">
         <h3 class="title">受托人</h3>
         <div class="content">
           <h4 class="subtitle">姓名</h4>
-          <p class="name">{{ trustee.name }}</p>
+          <p class="name">{{ personalInfo.trustee.name }}</p>
           <h4 class="subtitle">性别</h4>
-          <p class="gender">{{ trustee.gender }}</p>
+          <p class="gender">{{ personalInfo.trustee.gender }}</p>
           <h4 class="subtitle">身份证号码</h4>
-          <p class="number">{{ trustee.number }}</p>
+          <p class="number">{{ personalInfo.trustee.number }}</p>
         </div>
       </div>
       <div class="signature push">
         <span class="note">签名</span>
-        <img src="/delegate/signature.png" alt="签名">
+        <img src="/static/delegate/signature.png" alt="签名">
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 
+type InfoType = 'client' | 'trustee';
 export default defineComponent({
   name: 'Delegate',
   setup() {
+    const fetchPersonalInfo = async (type: InfoType) => {
+      return type === 'client' ?
+      { name: '宋先生', gender: '男', number: '123123123123123123'}
+      : { name: '陈先生', gender: '男', number: '123123123123123123'};
+    };
+
+    const personalInfo = reactive({ client: {}, trustee: {} })
+
+    const getPersonalInfo = async () => {
+      personalInfo.client = await fetchPersonalInfo('client');
+      personalInfo.trustee = await fetchPersonalInfo('trustee');
+    };
+
+    onMounted(getPersonalInfo);
+
     return {
-      client: {
-        name: '宋先生',
-        gender: '男',
-        number: '123123123123123123'
-      },
-      trustee: {
-        name: '陈先生',
-        gender: '男',
-        number: '123123123123123123'
-      }
-    }
+      personalInfo
+    };
   }
 });
 </script>
