@@ -111,7 +111,6 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  line-height: 1;
 }
 .content {
   display: flex;
