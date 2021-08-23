@@ -39,6 +39,7 @@ export default defineComponent({
 <style scoped>
 .nav-list {
   list-style-type: none;
+  color: #888888;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +48,6 @@ export default defineComponent({
   padding-left: 0;
   font-size: 18px;
   font-weight: 500;
-  color: #888888;
   flex-grow: 1;
 }
 .nav-list-item {

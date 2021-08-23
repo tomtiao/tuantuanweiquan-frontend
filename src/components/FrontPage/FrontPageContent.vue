@@ -17,7 +17,7 @@
           <img src="../../assets/tianxie.png" alt="我要维权">
           <span>我要维权</span>
         </a>
-        <a href="#" class="button-like-link">
+        <a href="/mytuan" class="button-like-link">
           <img src="../../assets/duoren.png" alt="我的团团">
           <span>我的团团</span>
         </a>
@@ -186,6 +186,7 @@ export default defineComponent({
   background-color: unset;
   outline: 0;
   max-width: 75%;
+  font-family: 'Source Han Sans CN';
 }
 .search-bar::placeholder {
   opacity: 1;
@@ -197,7 +198,7 @@ export default defineComponent({
   width: 100%;
   height: 300px;
 }
-#slider /deep/ .n-carousel__dots .n-carousel__dot {
+#slider :deep(.n-carousel__dots .n-carousel__dot) {
   margin-right: 2em !important;
 }
 .slider-item {

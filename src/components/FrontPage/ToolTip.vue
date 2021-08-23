@@ -11,12 +11,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 
 export default defineComponent({
   name: 'ToolTip',
   setup() {
-    const note = ref({ content: '暂无公告', link: '#' })
+    const note = reactive({ content: '暂无公告', link: '#' })
 
     // 待办：实现获取公告过程
     const fetchNote = async () => {
@@ -26,8 +26,8 @@ export default defineComponent({
     const getNote = async () => {
       try {
         const { content, link } = await fetchNote();
-        note.value.content = content;
-        note.value.link = link;
+        note.content = content;
+        note.link = link;
       } catch (e) {
         console.error(e);
       }

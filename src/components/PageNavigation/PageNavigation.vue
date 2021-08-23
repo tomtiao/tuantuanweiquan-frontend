@@ -53,6 +53,9 @@ export default defineComponent({
 }
 .title {
   text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 h1, h2 {
   margin: 0;

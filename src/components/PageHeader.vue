@@ -41,12 +41,14 @@ export default defineComponent({
   height: 1.5em;
   background-color: #ffffff;
   border-radius: 50%;
+  overflow: hidden;
 }
 .avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+  transform: translateY(15%);
 }
 .links {
   display: flex;

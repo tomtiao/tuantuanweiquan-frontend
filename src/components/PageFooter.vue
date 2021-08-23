@@ -27,6 +27,7 @@ export default defineComponent({
   background-color: #656565;
   font-size: 20px;
   font-family: 'Source Han Sans CN Regular';
+  line-height: 1;
 }
 .footer {
   display: flex;
