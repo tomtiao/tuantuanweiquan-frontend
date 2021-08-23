@@ -1,27 +1,106 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <PageHeader id="page-header"></PageHeader>
+  <PageNavigation id="page-navigation"></PageNavigation>
+  <div id="page-content-wrapper">
+    <router-view></router-view>
+  </div>
+  <PageFooter id="page-footer"></PageFooter>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import useRouterLink from './useRouterLink';
+import PageHeader from './components/PageHeader.vue';
+import PageNavigation from './components/PageNavigation/PageNavigation.vue';
+import PageFooter from './components/PageFooter.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    PageHeader,
+    PageNavigation,
+    PageFooter
+  },
+  setup() {
+    const router = useRouter();
+    onMounted(() => useRouterLink(router));
+
+    return {};
   }
 });
 </script>
 
 <style>
+@font-face {
+  font-family: 'Source Han Sans CN';
+  src: local('Source Han Sans CN'),
+  url('./assets/fonts/SourceHanSansCN-Light.otf');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Han Sans CN Normal';
+  src: local('Source Han Sans CN'),
+  url('./assets/fonts/SourceHanSansCN-Normal.otf');
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Han Sans CN Regular';
+  src: local('Source Han Sans CN'),
+  url('./assets/fonts/SourceHanSansCN-Regular.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Han Sans CN';
+  src: local('Source Han Sans CN'),
+  url('./assets/fonts/SourceHanSansCN-Medium.otf');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Han Sans CN';
+  src: local('Source Han Sans CN'),
+  url('./assets/fonts/SourceHanSansCN-Bold.otf');
+  font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Han Serif CN';
+  src: local('Source Han Serif CN'),
+  url('./assets/fonts/SourceHanSerifCN-Medium.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'M FLi Hei_ Noncommercial';
+  src: local('M FLi Hei_ Noncommercial'),
+  url('./assets/fonts/LiHei-Regular.otf');
+  font-display: swap;
+}
+body {
+  margin: 0;
+  padding: 0;
+  line-height: unset;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#page-header,
+#page-navigation,
+#page-footer {
+  flex-shrink: 0;
+}
+#page-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 </style>
