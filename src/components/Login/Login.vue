@@ -22,36 +22,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Login',
-
-  // computed: {
-  //   isClick(){
-  //      if(!this.phone || !this.verifyCode) {
-  //       return true
-  //      } else {
-  //       return false
-  //      }
-                 
-  //   }
-// },
- methods:{
-    // validatePhone(){
-    // //判断输入的手机号是否合法
-    // if(!this.phone) {
-    //   this.errors = {
-    //   phone:"手机号码不能为空"
-    // }
-    //   // return false
-    // } else if(!/^1[345678]\d{9}$/.test(this.phone)) {
-    //   this.errors = {
-    //   phone:"请输入正确是手机号"
-    // }
-    //   // return false
-    // } else {
-    //   this.errors ={}
-    //   return true
-    // }
-  // },
- },
 });
 </script>
 
