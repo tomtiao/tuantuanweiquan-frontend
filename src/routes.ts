@@ -4,6 +4,7 @@ import CreateTuan from './components/CreateTuan/CreateTuanContent.vue';
 import CreateSuccess from './components/CreateSuccess/CreateSuccess.vue';
 import Delegate from './components/Delegate/Delegate.vue';
 import MyTuan from './components/MyTuan/MyTuan.vue';
+import Message from './components/Message/Message.vue';
 import NotFound from './components/NotFound.vue';
 
 const routes = [
@@ -12,6 +13,7 @@ const routes = [
   { path: '/createTuan', component: CreateTuan },
   { path: '/createTuan/success', component: CreateSuccess },
   { path: '/delegate', component: Delegate },
+  { path: '/message', component: Message },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
 ];
 

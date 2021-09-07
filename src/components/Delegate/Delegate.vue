@@ -36,6 +36,7 @@
 import { defineComponent, onMounted, reactive } from 'vue';
 
 type InfoType = 'client' | 'trustee';
+type PersonalInfo = { name: string; gender: string; number: string }
 export default defineComponent({
   name: 'Delegate',
   setup() {
@@ -45,7 +46,10 @@ export default defineComponent({
       : { name: '陈先生', gender: '男', number: '123123123123123123'};
     };
 
-    const personalInfo = reactive({ client: {}, trustee: {} })
+    const personalInfo = reactive<{ client: PersonalInfo; trustee: PersonalInfo }>({
+      client: { name: '', gender: '', number: ''},
+      trustee: { name: '', gender: '', number: ''}
+    });
 
     const getPersonalInfo = async () => {
       personalInfo.client = await fetchPersonalInfo('client');
