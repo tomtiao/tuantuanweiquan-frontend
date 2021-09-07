@@ -13,7 +13,7 @@
       class="tuan-member-section"
       :members="members"
     />
-    <a href="#" class="button-like link">您的团团已符合标准，点击立刻维权</a>
+    <a href="/mytuan/safeguardingRightsSucces" class="button-like link">您的团团已符合标准，点击立刻维权</a>
   </div>
 </template>
 

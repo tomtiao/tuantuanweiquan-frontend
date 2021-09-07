@@ -6,15 +6,52 @@ import Delegate from './components/Delegate/Delegate.vue';
 import MyTuan from './components/MyTuan/MyTuan.vue';
 import Message from './components/Message/Message.vue';
 import NotFound from './components/NotFound.vue';
+import Login from './components/Login/Login.vue';
+import SafeguardingRightsSucces from './components/SafeguardingRightsSucces/SafeguardingRightsSucces.vue'
+import SimilarTuan from './components/SimilarTuan/SimilarTuan.vue'
 
 const routes = [
-  { path: '/', component: FrontPage },
-  { path: '/mytuan', component: MyTuan },
-  { path: '/createTuan', component: CreateTuan },
-  { path: '/createTuan/success', component: CreateSuccess },
-  { path: '/delegate', component: Delegate },
-  { path: '/message', component: Message },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
+  { 
+    path: '/', 
+    component: FrontPage
+  },
+  {
+    path: '/login',
+    component: Login
+  },
+  { 
+    path: '/mytuan', 
+    component: MyTuan 
+  },
+  { 
+    path: '/createTuan', 
+    component: CreateTuan 
+  },
+  { 
+    path: '/createTuan/success', 
+    component: CreateSuccess 
+  },
+  { 
+    path: '/delegate', 
+    component: Delegate 
+  },
+  {
+    path: '/mytuan/safeguardingRightsSucces',
+    component: SafeguardingRightsSucces
+  },
+  {
+    path: '/SimilarTuan',
+    component: SimilarTuan
+  },
+  {
+    path: '/message',
+    component: Message
+  },
+  { 
+    path: '/:pathMatch(.*)*', 
+    name: 'NotFound', 
+    component: NotFound 
+  }
 ];
 
 const router = createRouter({
