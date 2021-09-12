@@ -13,7 +13,7 @@
         ></FrontPageArticleList>
       </div>
       <div class="actions">
-        <a href="#" class="button-like-link">
+        <a href="/createTuan" class="button-like-link">
           <img src="../../assets/tianxie.png" alt="我要维权">
           <span>我要维权</span>
         </a>
