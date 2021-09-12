@@ -1,7 +1,7 @@
 import { onMounted, reactive } from "vue";
 import fetchMessageList from "@/api/messageList";
 
-export type ItemType = { name: string; avatar: string; key: number; }
+export type ItemType = { name: string; avatar: string; id: number; }
 export function useMessageList(type: 'agency' | 'staff'): { items: ItemType[] } {
   const items = reactive<ItemType[]>([]);
 

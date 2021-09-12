@@ -1,28 +1,49 @@
-import { ItemDetail } from "@/components/Message/useMessageView"
+import { MessageDetail } from "@/components/Message/useMessageView"
 
-export default async function fetchMessageView(hostId: number, guestId: number): Promise<ItemDetail> {
-  return {
-    host: {
-      avatar: '/static/message/police.png',
-      name: '龙洞派出所警方',
-      key: 1,
-      contents: [
-        {
-          content: '立案回执90909090',
-          timestamp: 0
-        }
-      ]
-    },
-    guest: {
-      avatar: '/static/message/police.png',
-      name: '小明',
-      key: 233,
-      contents: [
-        {
-          content: '5555',
-          timestamp: 0
-        }
-      ]
-    }
+export default async function fetchMessageView(targetId: number): Promise<MessageDetail[]> {
+  if (targetId === 10086) {
+    return [
+      {
+        id: 10086,
+        content: '立案回执90909090，警⽅正在全⼒破案',
+        timestamp: Date.now() - 100,
+      },
+      {
+        id: 10000,
+        content: '233',
+        timestamp: Date.now(),
+      },
+      // {
+      //   id: 10086,
+      //   content: '立案回执90909090，警⽅正在全⼒破案',
+      //   timestamp: Date.now() - 100,
+      // },
+      // {
+      //   id: 10000,
+      //   content: '233',
+      //   timestamp: Date.now(),
+      // },
+      // {
+      //   id: 10086,
+      //   content: '立案回执90909090，警⽅正在全⼒破案',
+      //   timestamp: Date.now() - 100,
+      // },
+      // {
+      //   id: 10000,
+      //   content: '233',
+      //   timestamp: Date.now(),
+      // },
+      // {
+      //   id: 10086,
+      //   content: '立案回执90909090，警⽅正在全⼒破案',
+      //   timestamp: Date.now() - 100,
+      // },
+      // {
+      //   id: 10000,
+      //   content: '233',
+      //   timestamp: Date.now(),
+      // }
+    ];
   }
+  return [];
 }

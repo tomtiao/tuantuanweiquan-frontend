@@ -5,14 +5,11 @@
       <button class="add-btn">添加</button>
     </header>
     <ul class="list">
-      <li class="list-item" v-for="item of items" :key="item.key">
+      <li class="list-item" v-for="item of items" :key="item.id" @click="onClickItem(item)">
         <div class="img-container">
           <img :src="item.avatar" :alt="item.name" class="img">
         </div>
-        <div class="item-main-content">
-          <p class="item-content name">{{ item.name }}</p>
-          <p class="item-content text">{{ item.content }}</p>
-        </div>
+        <p class="item-content">{{ item.name }}</p>
       </li>
     </ul>
     <ul class="func-list">
@@ -24,14 +21,20 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { ItemDetail } from './useMessageView';
+import { ItemType } from './useMessageList';
 
 export default defineComponent({
-  name: 'MessageList',
+  name: 'MessageView',
+  emits: ['clickItem'],
   props: {
-    detail: {
-      type: Object as PropType<ItemDetail>,
+    items: {
+      type: Array as PropType<ItemType[]>,
       required: true
+    }
+  },
+  methods: {
+    onClickItem(item: ItemType) {
+      this.$emit('clickItem', item);
     }
   }
 });

@@ -2,18 +2,19 @@
   <div class="wrapper">
     <PageSubTitle title="我的消息" class="page-subtitle"></PageSubTitle>
     <div class="content-container">
-      <MessageList :items="items" class="message-list"></MessageList>
-      <MessageView :items="items" class="message-view"></MessageView>
+      <MessageList :items="items" class="message-list" @click-item="onClickItem"></MessageList>
+      <MessageView :details="details" :current-item="currentItem" class="message-view"></MessageView>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import PageSubTitle from '@/components/PageSubtitle.vue';
 import MessageList from './MessageList.vue';
 import MessageView from './MessageView.vue';
-import { useMessageList } from './useMessageList';
+import { ItemType, useMessageList } from './useMessageList';
+import { useMessageView } from './useMessageView';
 
 export default defineComponent({
   name: 'Message',
@@ -22,11 +23,28 @@ export default defineComponent({
     MessageList,
     MessageView,
   },
+  methods: {
+    
+  },
   setup() {
     const { items } = useMessageList('agency');
+
+    const { details, getMessageView } = useMessageView();
+
+    const currentItem = reactive<ItemType>({ id: -1, name: '', avatar: '', });
+    const onClickItem = (item: ItemType) => {
+      if (currentItem.id === item.id) return;
+      console.debug(`clicked: ${item.id}`);
+      Object.assign(currentItem, item);
+      getMessageView(item.id);
+    };
     
     return {
-      items
+      items,
+      details,
+      currentItem,
+
+      onClickItem,
     }
   }
 });
