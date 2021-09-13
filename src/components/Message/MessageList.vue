@@ -13,7 +13,7 @@
       </li>
     </ul>
     <ul class="func-list">
-      <li class="func"><a href="/message">消息</a></li>
+      <li class="func"><button class="func-button" type="button" @click="handleSwitchMessage">消息</button></li>
       <li class="func"><a href="/contact">通讯录</a></li>
     </ul>
   </div>
@@ -25,7 +25,7 @@ import { ItemType } from './useMessageList';
 
 export default defineComponent({
   name: 'MessageView',
-  emits: ['clickItem'],
+  emits: ['clickItem', 'switchMessage'],
   props: {
     items: {
       type: Array as PropType<ItemType[]>,
@@ -35,6 +35,9 @@ export default defineComponent({
   methods: {
     onClickItem(item: ItemType) {
       this.$emit('clickItem', item);
+    },
+    handleSwitchMessage() {
+      this.$emit('switchMessage');
     }
   }
 });
@@ -74,7 +77,7 @@ export default defineComponent({
   width: 30px;
   height: 30px;
   padding: 0;
-  background: center / contain no-repeat url('/static/message/plus.png');
+  background: center / contain no-repeat url('../../assets/plus.png');
   cursor: pointer;
 }
 ul {
@@ -126,6 +129,14 @@ ul {
 }
 .func:last-of-type {
   margin-left: 4em;
+}
+.func-button {
+  color: inherit;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: inherit;
+  cursor: pointer;
 }
 a {
   text-decoration: inherit;

@@ -44,6 +44,10 @@ export default async function fetchMessageView(targetId: number): Promise<Messag
       //   timestamp: Date.now(),
       // }
     ];
+  } else if (targetId === 233) {
+    return [
+      { id: 233, content: '欢迎大家加入群聊！', timestamp: 0 }
+    ];
   }
   return [];
 }

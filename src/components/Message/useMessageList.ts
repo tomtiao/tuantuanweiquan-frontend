@@ -1,8 +1,8 @@
-import { onMounted, reactive } from "vue";
+import { reactive } from "vue";
 import fetchMessageList from "@/api/messageList";
 
 export type ItemType = { name: string; avatar: string; id: number; }
-export function useMessageList(type: 'agency' | 'staff'): { items: ItemType[] } {
+export function useMessageList(): { items: ItemType[], getMessageList: (type: 'agency' | 'staff') => void } {
   const items = reactive<ItemType[]>([]);
 
   const getMessageList = async (type: 'agency' | 'staff') => {
@@ -10,9 +10,9 @@ export function useMessageList(type: 'agency' | 'staff'): { items: ItemType[] } 
     items.push(...await fetchMessageList(type));
   };
 
-  onMounted(() => getMessageList(type));
-
   return {
-    items
+    items,
+
+    getMessageList
   };
 }

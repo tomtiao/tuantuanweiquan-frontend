@@ -2,14 +2,14 @@
   <div class="wrapper">
     <PageSubTitle title="我的消息" class="page-subtitle"></PageSubTitle>
     <div class="content-container">
-      <MessageList :items="items" class="message-list" @click-item="onClickItem"></MessageList>
-      <MessageView :details="details" :current-item="currentItem" class="message-view"></MessageView>
+      <MessageList :items="items" class="message-list" @click-item="onClickItem" @switch-message="handleSwitchMessage"></MessageList>
+      <MessageView :details="details" :current-item="currentItem" class="message-view" @go-back="onGoBack"></MessageView>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive, ref } from 'vue';
 import PageSubTitle from '@/components/PageSubtitle.vue';
 import MessageList from './MessageList.vue';
 import MessageView from './MessageView.vue';
@@ -23,12 +23,8 @@ export default defineComponent({
     MessageList,
     MessageView,
   },
-  methods: {
-    
-  },
   setup() {
-    const { items } = useMessageList('agency');
-
+    
     const { details, getMessageView } = useMessageView();
 
     const currentItem = reactive<ItemType>({ id: -1, name: '', avatar: '', });
@@ -38,6 +34,20 @@ export default defineComponent({
       Object.assign(currentItem, item);
       getMessageView(item.id);
     };
+
+    const onGoBack = () => {
+      currentItem.id = -1;
+    };
+
+    const { items, getMessageList } = useMessageList();
+
+    const type = ref<'agency' | 'staff'>('agency');
+    onMounted(() => getMessageList(type.value));
+
+    const handleSwitchMessage = () => {
+      type.value = type.value === 'agency' ? 'staff' : 'agency';
+      getMessageList(type.value);
+    };
     
     return {
       items,
@@ -45,6 +55,8 @@ export default defineComponent({
       currentItem,
 
       onClickItem,
+      onGoBack,
+      handleSwitchMessage
     }
   }
 });

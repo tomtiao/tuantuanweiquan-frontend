@@ -1,42 +1,51 @@
 <template>
   <div class="container">
-    <header class="header">
-      <h2 class="container-title">消息列表</h2>
-      <button class="add-btn">添加</button>
-    </header>
-    <div class="note-wrapper" v-if="currentItem.id === -1">
-      <p class="note">团团维权</p>
-    </div>
-    <div class="list-container" v-else> <!-- FIXME: 聊天记录会影响父元素高度 -->
-      <ul class="list">
-        <li class="list-item" v-for="message of items" :key="message.id">
-          <template v-if="currentItem.id === message.id">
-            <div class="img-container">
-              <img :src="currentItem.avatar" :alt="currentItem.name" class="img">
-            </div>
-            <div class="main-content">
-              <p class="name">
-                {{ currentItem.name }}
-              </p>
-              <p class="content">{{ message.content }}</p>
-            </div>
-          </template>
-          <template v-else>
-            <div class="img-container right">
-              <img src="" :alt="message.id+''" class="img">
-            </div>
-            <div class="main-content right">
-              <p class="name">我</p>
-              <p class="content">{{ message.content }}</p>
-            </div>
-          </template>
-        </li>
-      </ul>
-    </div>
-    <ul class="func-list">
-      <li class="func"><a href="/message">消息</a></li>
-      <li class="func"><a href="/contact">通讯录</a></li>
-    </ul>
+    <template v-if="currentItem.id === -1">
+      <div class="note-wrapper">
+        <p class="note">团团维权</p>
+        <p class="subnote">点击消息列表中的项目</p>
+      </div>
+    </template>
+    <template v-else>
+      <header class="header">
+        <button class="back-btn header-btn" @click="onClickGoBack">返回</button>
+        <h2 class="container-title">{{ currentItem.name }}</h2>
+        <button class="add-btn header-btn">添加</button>
+      </header>
+      <div class="list-container"> <!-- FIXME: 聊天记录会影响父元素高度 -->
+        <ul class="list">
+          <li class="list-item" v-for="message of items" :key="message.id">
+            <template v-if="currentItem.id === message.id">
+              <div class="img-container">
+                <img :src="currentItem.avatar" :alt="currentItem.name" class="img">
+              </div>
+              <div class="main-content">
+                <p class="name">
+                  {{ currentItem.name }}
+                </p>
+                <p class="content">{{ message.content }}</p>
+              </div>
+            </template>
+            <template v-else>
+              <div class="img-container right">
+                <img src="" :alt="message.id+''" class="img">
+              </div>
+              <div class="main-content right">
+                <p class="name">我</p>
+                <p class="content">{{ message.content }}</p>
+              </div>
+            </template>
+          </li>
+        </ul>
+      </div>
+      <div class="func-list">
+        <button class="func func-button voice">语音</button>
+        <input type="text" class="func func-input">
+        <button class="func func-button sticker">表情</button>
+        <button class="func func-button more">更多</button>
+      </div>
+    </template>
+    
   </div>
 </template>
 
@@ -46,7 +55,8 @@ import { ItemType } from "./useMessageList";
 import { MessageDetail } from "./useMessageView";
 
 export default defineComponent({
-  name: "MessageList",
+  name: "MessageView",
+  emits: ['goBack'],
   props: {
     details: {
       type: Array as PropType<MessageDetail[]>,
@@ -57,13 +67,19 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, context) {
     const { details: items } = toRefs(props);
     const sortByTimestamp = () => [...items.value].sort((a, b) => a.timestamp - b.timestamp);
     const sorted = computed(sortByTimestamp);
 
+    const onClickGoBack = () => {
+      context.emit('goBack');
+    };
+
     return {
       items: sorted,
+
+      onClickGoBack
     };
   },
 });
@@ -75,6 +91,8 @@ export default defineComponent({
   --bg-color: #e4e4e4;
   --item-bg-color: #fff;
   --content-color: #6c6c6c;
+  --message-toolbar-bg-color: #f2f2f2;
+  --message-input-bg-color: #fff;
 
   display: flex;
   flex-direction: column;
@@ -96,16 +114,26 @@ export default defineComponent({
   font-size: inherit;
   font-weight: inherit;
 }
-.add-btn {
+.header-btn {
   color: transparent;
   position: absolute;
-  right: 1.5em;
   border: 0;
-  width: 30px;
-  height: 30px;
   padding: 0;
-  background: center / contain no-repeat url("../../assets/plus.png");
+  font-size: 16px;
   cursor: pointer;
+}
+.back-btn {
+  left: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  background: center / contain no-repeat url("../../assets/right_arrow.png");
+  transform: rotate(180deg);
+}
+.add-btn {
+  right: 1.5em;
+  width: 2em;
+  height: 2em;
+  background: center / contain no-repeat url("../../assets/ellipsis.png");
 }
 .list-container {
   flex-grow: 1;
@@ -133,6 +161,7 @@ ul {
 .note-wrapper {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -166,8 +195,14 @@ ul {
   hyphens: auto;
 }
 .note {
+  margin: 0.5em 0;
   font-weight: bold;
   font-size: 2em;
+  font-family: "Source Han Sans CN";
+}
+.subnote {
+  margin: 0.5em 0;
+  font-size: 1em;
   font-family: "Source Han Sans CN";
 }
 .img-container {
@@ -186,18 +221,54 @@ ul {
   height: 100%;
 }
 .func-list {
-  color: #fff;
   flex: 0 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 70px;
-  background-color: var(--theme-color);
+  background-color: var(--message-toolbar-bg-color);
   font-size: 20px;
   font-family: "Source Han Sans CN Regular";
 }
-.func:last-of-type {
-  margin-left: 4em;
+.func-button {
+  flex: 0 0 auto;
+  color: transparent;
+  box-sizing: border-box;
+  border: 0;
+  padding: 0;
+  width: 2.25em;
+  height: 2.25em;
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-size: 16px;
+}
+.voice {
+  background-image: url('../../assets/voice.png');
+  margin: 0 1.5em;
+}
+.sticker {
+  background-image: url('../../assets/sticker.png');
+  margin-left: 1.5em;
+}
+.more {
+  background-image: url('../../assets/plus.png');
+  width: 2.75em;
+  height: 2.75em;
+  margin-right: 0.5em;
+}
+.func-input {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 644px;
+  height: 48px;
+  border: 0;
+  padding: 1em;
+  border-radius: 24px;
+  background-color: var(--message-input-bg-color);
+  font-size: 18px;
+  outline: none;
 }
 a {
   text-decoration: inherit;

@@ -6,11 +6,12 @@ export default async function fetchMessageList(type: 'agency' | 'staff'): Promis
       return [
         { avatar: '/static/message/police.png', name: '龙洞派出所警方', id: 10086 },
         { avatar: '/static/message/commission.png', name: '广州消费者协会', id: 2 },
-      ]
+      ];
     }
     case 'staff':
       return [
-        
-      ]
+        { avatar: '/static/message/police.png', name: '系统消息', id: 0 },
+        { avatar: '/static/message/commission.png', name: '龙洞华为手机群', id: 233 },
+      ];
   }
 }
