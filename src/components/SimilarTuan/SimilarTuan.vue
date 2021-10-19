@@ -2,7 +2,7 @@
     <div class="content-wrapper">
         <div id="note" class="title">
             <img src="../../assets/look.png" alt="搜索镜" class="note-img">
-            <p>以下团团与您类似，可选择加入或<a href="/createTuan">继续创建团团</a></p>
+            <p>以下团团与您类似，可选择加入或<a href="/createTuan/success">继续创建团团</a></p>
         </div>
         <SimilarInformation class="tuan-member-section"  :members="members" />
     </div>

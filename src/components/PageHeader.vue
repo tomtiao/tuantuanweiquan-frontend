@@ -5,7 +5,7 @@
           <img src="../assets/avatar.png" alt="用户头像" class="avatar-img">
       </div>
       <div class="links">
-        <a class="link message" href="#">消息</a>
+        <a class="link message" href="/message">消息</a>
         <a class="link login" href="/login">登录</a>
         <a class="link signup" href="/signup">注册</a>
       </div>

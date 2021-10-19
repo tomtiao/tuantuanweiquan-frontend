@@ -4,6 +4,7 @@ import CreateTuan from './components/CreateTuan/CreateTuanContent.vue';
 import CreateSuccess from './components/CreateSuccess/CreateSuccess.vue';
 import Delegate from './components/Delegate/Delegate.vue';
 import MyTuan from './components/MyTuan/MyTuan.vue';
+import Message from './components/Message/Message.vue';
 import NotFound from './components/NotFound.vue';
 import Login from './components/Login/Login.vue';
 import SafeguardingRightsSucces from './components/SafeguardingRightsSucces/SafeguardingRightsSucces.vue'
@@ -41,6 +42,10 @@ const routes = [
   {
     path: '/SimilarTuan',
     component: SimilarTuan
+  },
+  {
+    path: '/message',
+    component: Message
   },
   { 
     path: '/:pathMatch(.*)*', 

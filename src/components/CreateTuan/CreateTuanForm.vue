@@ -34,7 +34,7 @@
     </div>
     <div class="buttons">
       <button class="button" type="button">保存</button>
-      <button class="button" type="submit">提交</button>
+      <button class="button" type="submit" @click="$router.push({ path: '/SimilarTuan' }) /* 演示临时使用，完成表单提交后删除 */">提交</button>
     </div>
   </form>
 </template>
